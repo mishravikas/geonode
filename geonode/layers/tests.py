@@ -73,10 +73,10 @@ class LayersTest(TestCase):
 
     # If anonymous and/or authenticated are not specified,
     # should set_layer_permissions remove any existing perms granted??
-
+    perms = ["change_resourcebase_permissions","view_resourcebase", "edit_resourcebase_style", "edit_resourcebase_metadata", "edit_resourcebase_data", "resourcebase_download"]
     perm_spec = {
         "users":{
-            "admin": ["change_resourcebase", "change_resourcebase_permissions","view_resourcebase"]
+            "admin": perms
         },
         "groups": {}  
     }
@@ -96,8 +96,8 @@ class LayersTest(TestCase):
         self.assertTrue(self.anonymous_user.has_perm('view_resourcebase', layer.get_self_resource()))
 
         # Test that the owner can manage the layer
-        self.assertTrue(layer.owner.has_perm('change_resourcebase_permissions', layer.get_self_resource()))
-        self.assertTrue(layer.owner.has_perm('change_resourcebase', layer.get_self_resource()))
+        for perm in perms:
+            self.assertTrue(layer.owner.has_perm(perm, layer.get_self_resource()))
 
     def test_set_layer_permissions(self):
         """Verify that the set_layer_permissions view is behaving as expected
