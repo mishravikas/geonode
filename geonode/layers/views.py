@@ -64,6 +64,9 @@ _PERMISSION_MSG_GENERIC = _('You do not have permissions for this layer.')
 _PERMISSION_MSG_MODIFY = _("You are not permitted to modify this layer")
 _PERMISSION_MSG_METADATA = _("You are not permitted to modify this layer's metadata")
 _PERMISSION_MSG_VIEW = _("You are not permitted to view this layer")
+_PERMISSION_MSG_DOWNLOAD = _("you are not permitted to download this layer")
+_PERMISSION_MSG_STYLE = _("You are not permitted to edit this layer's style")
+
 
 
 def _resolve_layer(request, typename, permission='base.view_resourcebase',
